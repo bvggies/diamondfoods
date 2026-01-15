@@ -1,0 +1,7 @@
+{
+  "name": "Diamondfoods Multi-Vendor Platform",
+  "description": "A comprehensive multi-vendor food delivery ecosystem featuring a customer app, restaurant management, driver tracking, and admin dashboard, powered by Gemini AI for smart recommendations.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
