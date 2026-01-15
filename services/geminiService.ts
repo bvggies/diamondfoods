@@ -105,14 +105,18 @@ export const geminiService = {
       const distance = Math.sqrt(Math.pow(destPos.x - driverPos.x, 2) + Math.pow(destPos.y - driverPos.y, 2));
       const response = await ai.models.generateContent({
         model: 'gemini-3-flash-preview',
-        contents: `Predict estimated arrival time (ETA) for a luxury food delivery.
+        contents: `Refine the estimated arrival time (ETA) for an elite food delivery based on the following multi-modal telemetry.
         
         TELEMETRY DATA:
-        - Distance Vector: ${distance.toFixed(2)} units.
-        - Real-time Traffic: ${traffic}.
-        - Historical Average for this route: ${historicalAvgMinutes} minutes.
+        - Geometric Distance: ${distance.toFixed(2)} coordinate units.
+        - Current Traffic Conditions: ${traffic}.
+        - Historical Route Performance: ${historicalAvgMinutes} minutes average.
         
-        Provide a realistic ETA in minutes, a brief reasoning of the environmental impact, and a confidence score (0-100) based on how closely current data matches historical norms.`,
+        INSTRUCTIONS:
+        1. Heavily weigh the current traffic against the historical average.
+        2. Provide a realistic ETA (estimatedMinutes) as an integer.
+        3. Explain the reasoning, mentioning how traffic or history influenced the final number.
+        4. Provide a confidence score (0-100) reflecting data reliability.`,
         config: {
           responseMimeType: "application/json",
           responseSchema: {
